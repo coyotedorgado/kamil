@@ -1,5 +1,19 @@
 <div class="body">
-    <section>
+    <section class="login">
         <h1>Salão Vânia Fernandes</h1>
+        <div class="divisor">
+            <p>usuario</p>
+            <input class="inputs" [(ngModel)]="us" autofocus>
+        </div>
+        <div class="divisor">
+            <p>senha</p>
+            <input class="inputs" [(ngModel)]="se" type="password">
+            <button [ngStyle]="{'display': msgError ? 'none' : 'block'}" class="msgErro">usuario ou senha incorretos</button>
+        </div>
+        <button class="button" (click)="checkLogin(us, se)">Login</button>
+    </section>
+    <section class="sideBar">
+        <h2>zapzap</h2>
+        <h2>instagram</h2>
     </section>
 </div>
