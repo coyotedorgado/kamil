@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AutorizacaoService {
-  autorizado = true
+  autorizado = true;
   usuario = "vaniafernandes";
   senha = "sis2013";
   constructor(private router: Router) {}

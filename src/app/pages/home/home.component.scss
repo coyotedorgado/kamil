@@ -33,8 +33,13 @@ h1{
 }
 .buttonH{
     background-color: white;
-    border: 1px solid;
+    border: 2px solid;
     width: 140px;
     height: 70px;
     border-radius: 20px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+.buttonH:hover{
+    background-color: rgb(255, 211, 211);
 }
