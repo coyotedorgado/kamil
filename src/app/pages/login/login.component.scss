@@ -25,7 +25,7 @@
         // height: 100%;
         // background-color: aqua;
     }
-    .msgErro{
+    .msgError{
         color: red;
         margin: 0;
         background-color: rgba(230, 235, 239, 0.251);
@@ -70,10 +70,31 @@
     .sideBar{
         position: absolute;
         right: 0;
+        width: 22.6%;
+        // background-color: aqua;
+        height: 100%;
     }
     h2{
         color: white;
-        font-size: 40px;
+        font-size: 30px;
         font-family: 'Roboto', sans-serif;
+        border-bottom: 3px white solid;
+        width: max-content;
+    }
+    a{
+        color: white;
+        font-size: 30px;
+        font-family: 'Roboto', sans-serif;
+        border-style: none;
+        color: white;
+    }
+    .p{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        bottom: 0;
+        font-size: 30px;
+        border: 2px #920359 solid;
+        margin-bottom: 20px;
     }
 }

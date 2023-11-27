@@ -13,7 +13,9 @@ export class AutorizacaoService {
     if(usuario == this.usuario && senha == this.senha) {//se usuario e senha que vem do input estiverem corretas liberar rota
       this.autorizado = true
       this.router.navigate(['/home'])
+      return true
+    }else{
+      return false//senao retorna falso 
     }
-    return false//senao retorna falso 
   }
 }
