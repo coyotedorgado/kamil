@@ -1,15 +1,21 @@
 <div class="body">
     <h1>Cadastro de Funcionarios funcionarios</h1>
     <section class="container">
-        <input (keyup.enter)="alterFocus()" class="inputs content" type="text">
-        <select class="content" name="profissao">
+        nome:
+        <input (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content" type="text">
+        profissao:
+        <input (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content datalist" list="lista-p">
+        <datalist id="lista-p">
             <option value="cabeleireira">cabeleireira</option>
             <option value="manicure">manicure</option>
             <option value="esteticista">esteticista</option>
-        </select>
-        <select class="content" name="sexo">
-            <option value="f">feminino</option>
-            <option value="m">marculino</option>
-        </select>
+        </datalist>
+        sexo:
+        <input (keyup.enter)="alterFocus()" (click)="zerar2()" class="content datalist" list="lista-s" type="text">
+        <datalist id="lista-s">
+            <option value="f">f</option>
+            <option value="m">m</option>
+        </datalist>
+        <button (keyup.enter)="alterFocus()" class="content">Adicionar Funcionario</button>
     </section>
 </div>
