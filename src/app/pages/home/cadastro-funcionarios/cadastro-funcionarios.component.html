@@ -1,6 +1,15 @@
-<input class="inputs" type="text">
-<input class="inputs" type="text">
-<select name="sexo" id="">
-    <option value="f">feminino</option>
-    <option value="m">marculino</option>
-</select>
+<div class="body">
+    <h1>Cadastro de Funcionarios funcionarios</h1>
+    <section class="container">
+        <input (keyup.enter)="alterFocus()" class="inputs content" type="text">
+        <select class="content" name="profissao">
+            <option value="cabeleireira">cabeleireira</option>
+            <option value="manicure">manicure</option>
+            <option value="esteticista">esteticista</option>
+        </select>
+        <select class="content" name="sexo">
+            <option value="f">feminino</option>
+            <option value="m">marculino</option>
+        </select>
+    </section>
+</div>

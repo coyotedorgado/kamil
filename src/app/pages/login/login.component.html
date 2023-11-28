@@ -3,11 +3,11 @@
         <h1>Salão Vânia Fernandes</h1>
         <div class="divisor">
             <p>usuario</p>
-            <input class="inputs input1" [(ngModel)]="us" (keyup.enter)="alterFocus()">
+            <input class="inputs" [(ngModel)]="us" (keyup.enter)="alterFocus()">
         </div>
         <div class="divisor">
             <p>senha</p>
-            <input class="inputs input2" [(ngModel)]="se" type="password" (keyup.enter)="alterFocus()">
+            <input class="inputs" [(ngModel)]="se" type="password" (keyup.enter)="alterFocus()">
             <button [ngStyle]="{'display': msgError ? 'none' : 'block'}" class="msgError">usuario ou senha incorretos</button>
         </div>
         <button class="button" (click)="checkLogin(us, se)" (keyup.enter)="alterFocus()">Login</button>
