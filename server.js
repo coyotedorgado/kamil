@@ -1,9 +1,16 @@
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
-
+function insertFunci(a, b, c) {
+  var sql = `INSERT INTO funcionarios (nome, tipo, sexo) VALUES ('${a}', '${b}', '${c}')`
+    db.query(sql, function(err, result){
+    if(err) throw err;
+    })
+    console.log("foi inserido na tabela funcionarios ", a, b, c)
+}
 // Configuração da conexão com o MySQL
 const db = mysql.createConnection({
   host: 'localhost',
@@ -21,19 +28,29 @@ db.connect((err) => {
   }
   console.log('Conexão com o banco de dados MySQL estabelecida');
 });
-
+app.use(cors())
 // Defina uma rota de exemplo
 app.get('/', (req, res) => {
   // Execute uma consulta SQL de exemplo
-  db.query('SELECT * FROM funcionarios', (err, resultados) => {
+  db.query('SELECT * FROM funcionarios', (err, resultado) => {
     if (err) {
       console.error('Erro na consulta SQL:', err);
       res.status(500).json({ error: 'Erro ao buscar dados' });
       return;
     }
-    res.json(resultados);
+    res.json(resultado);
   });
 });
+
+app.get('/funcionarios', (req, res)=> {
+  db.query(`SELECT nome FROM funcionarios`, (err, resultado)=>{
+    res.send(resultado)
+  })
+})
+
+app.get('/addFuncio/:nome/:profissao/:sexo', (req, res) => {
+  insertFunci(req.params.nome, req.params.profissao, req.params.sexo)
+})
 
 app.listen(port, () => {
   console.log(`Servidor Node.js rodando na porta ${port}`);

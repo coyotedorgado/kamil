@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/LoginComponent';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LancarCComponent } from './pages/home/lancar-c/lancar-c.component';
 import { CadastroClienteComponent } from './pages/home/cadastro-cliente/cadastro-cliente.component';
 import { CadastroFuncionariosComponent } from './pages/home/cadastro-funcionarios/cadastro-funcionarios.component';
@@ -28,7 +28,8 @@ import { ContasPagarComponent } from './pages/home/contas-pagar/contas-pagar.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
