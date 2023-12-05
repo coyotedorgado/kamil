@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/funcionarios', (req, res)=> {
-  db.query(`SELECT nome FROM funcionarios`, (err, resultado)=>{
+  db.query(`SELECT * FROM funcionarios`, (err, resultado)=>{
     res.send(resultado)
   })
 })

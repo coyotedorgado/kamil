@@ -1,28 +1,89 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl} from '@angular/forms';
-import { __values } from 'tslib';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormBuilder,Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-funcionarios',
   templateUrl: './cadastro-funcionarios.component.html',
   styleUrls: ['./cadastro-funcionarios.component.scss']
 })
-export class CadastroFuncionariosComponent implements OnInit {
+export class CadastroFuncionariosComponent implements OnInit, AfterViewInit {
   public count: number = 0;
   public elements = document.getElementsByClassName("content");
-  public funcRepetido = '';
-  public msgError = false;
+  public funcRepetido: string = '';
+  public displayPrincipal: boolean = true;
+  public msgError: boolean = false;
   
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    
+  }
   form = this.fb.group({
     nome: ['', Validators.required],
     profissao: ['', Validators.required],
     sexo: ['', Validators.required]
   })
   ngOnInit(): void {
+    
+  }
+  ngAfterViewInit(): void {
     var inputElement = this.elements[0] as HTMLElement
     inputElement.focus()
-    
+  }
+  async dadosFuncionarios() {
+    await fetch(`http://localhost:3000/funcionarios`)
+    .then((res)=>{
+      return res.json()
+    })
+    .then(data => {
+      var table = document.getElementById("table")!;
+      for(let i = 0; i < data.length; i++) {
+        //texto dos td`s
+        var nome = document.createTextNode(`${data[i].nome}`)
+        var profissao = document.createTextNode(`${data[i].tipo}`)
+        var sexo = document.createTextNode(`${data[i].sexo}`)
+        //td`s
+        var tdNome = document.createElement("td")
+        var tdProfissao = document.createElement("td")
+        var tdSexo = document.createElement("td")
+        //valores dos td`s
+        tdNome.appendChild(nome)
+        tdProfissao.appendChild(profissao)
+        tdSexo.appendChild(sexo)
+        //th
+        var tr = document.createElement("tr")
+        tr.appendChild(tdNome)
+        tr.appendChild(tdProfissao)
+        tr.appendChild(tdSexo)
+        table.appendChild(tr)
+
+        tdNome.style.border = "1px solid black"
+        tdProfissao.style.border = "1px solid black"
+        tdSexo.style.border = "1px solid black"
+        
+        tr.style.border = "1px solid black"
+
+        tdNome.style.textAlign = "center"
+        tdProfissao.style.textAlign = "center"
+        tdSexo.style.textAlign = "center"
+
+        tdNome.style.verticalAlign = "middle"
+        tdProfissao.style.verticalAlign = "middle"
+        tdSexo.style.verticalAlign = "middle"
+      }
+    })
+  }
+  verifyCount() {
+    if(this.count == 0){
+      var inputElement = this.elements[0] as HTMLElement
+      inputElement.focus() 
+    }
+  }
+  public escoderFuncioAdd() {
+    if(this.displayPrincipal == true){
+      this.displayPrincipal = false
+      this.dadosFuncionarios()
+    }else{
+      this.displayPrincipal = true
+    }
   }
   resetForm() {
     this.form.setValue({
@@ -48,7 +109,7 @@ export class CadastroFuncionariosComponent implements OnInit {
               console.log('tudo certo')
               fetch(`http://localhost:3000/addFuncio/${this.form.value.nome}/${this.form.value.profissao}/${this.form.value.sexo}`)
               .then((res)=> {
-                return res.json
+                return res.json()
               })
               .then(data => {
                 console.log(data)
@@ -102,13 +163,6 @@ export class CadastroFuncionariosComponent implements OnInit {
       case 3:
         var inputElement = this.elements[3] as HTMLElement   
         inputElement.focus()
-          // var button1: any = document.getElementById("input1")
-          // var button2: any = document.getElementById("input2")
-          // var button3: any = document.getElementById("input3")
-          // button1.value = ''
-          // button2.value = ''
-          // button3.value = ''
-        break
     }
   }
 }
