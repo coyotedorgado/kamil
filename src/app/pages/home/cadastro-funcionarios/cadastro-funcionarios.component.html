@@ -1,7 +1,7 @@
 <div class="body">
     <h1>Cadastro de Funcionarios funcionarios</h1>
     <section *ngIf="displayPrincipal" class="container">
-        <form (ngSubmit)="teste()" [formGroup]="form" #formDir="ngForm">
+        <form [formGroup]="form">
         <input formControlName="nome" required id="input1" placeholder="Digite o nome..." (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content" type="text">
         <input formControlName="profissao" required id="input2" placeholder="Digite a profissao..." (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content" list="lista-p">
         <datalist id="lista-p">
@@ -15,16 +15,16 @@
             <option value="f">feminino</option>
             <option value="m">masculino</option>
         </datalist>
-        <button (keyup.enter)="alterFocus()" type="submit" class="content">Adicionar Funcionario</button>
+        <button (click)="teste" class="content">Adicionar Funcionario</button>
         </form>
         <p class="msgError" *ngIf="msgError">A funcionaria {{funcRepetido}} ja esta cadastrada</p>
-        <div *ngIf="(form.controls.nome.invalid && form.controls.nome.touched)">
+        <div *ngIf="form.controls.nome.invalid && (form.controls.nome.dirty && form.controls.nome.touched)">
             Nome é obrigatório.
           </div>
-          <div *ngIf="form.controls.profissao.invalid && form.controls.profissao.touched">
+          <div *ngIf="form.controls.profissao.invalid && (form.controls.profissao.dirty && form.controls.profissao.touched)">
             Profissão é obrigatória.
           </div>
-          <div *ngIf="form.controls.sexo.invalid && form.controls.sexo.touched">
+          <div *ngIf="form.controls.sexo.invalid && (form.controls.sexo.dirty && form.controls.sexo.touched)">
             Sexo é obrigatório.
           </div>
           <button (click)="escoderFuncioAdd()" class="exibirFuncionarios">visualizar funcionarios</button>
