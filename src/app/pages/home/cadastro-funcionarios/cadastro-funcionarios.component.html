@@ -1,6 +1,7 @@
 <div class="body">
-    <h1>Cadastro de Funcionarios</h1>
-    <section *ngIf="displayPrincipal" class="container">
+  <h1>Cadastro de Funcionarios</h1>
+  <section *ngIf="displayPrincipal" class="container">
+        <p *ngIf="funcioMsg">Funcionario {{funcio}} cadastrado</p>
         <form [formGroup]="form">
         <input formControlName="nome" required id="input1" placeholder="Inserir nome..." (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content" type="text">
         <input formControlName="profissao" required id="input2" placeholder="Inserir profissao..." (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content" list="lista-p">
@@ -15,7 +16,7 @@
             <option value="f">feminino</option>
             <option value="m">masculino</option>
         </datalist>
-        <button (click)="teste" class="content">Adicionar Funcionario</button>
+        <button class="content">Adicionar Funcionario</button>
         </form>
         <p class="msgError" *ngIf="msgError">A funcionaria {{funcRepetido}} ja esta cadastrada</p>
         <div *ngIf="form.controls.nome.invalid && (form.controls.nome.dirty && form.controls.nome.touched)">
