@@ -25,3 +25,23 @@ h1{
     border: 2px solid;
     align-items: center;
 }
+.buttonAdd{
+    width: 200px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+}
+.inputs{
+    background-color: rgba(137, 161, 181, 0.251);
+    border: 1px solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+button{
+    height: 20px;
+    background-color: rgba(137, 161, 181, 0.251);
+    font-size: 15px;
+    border: 1px solid;
+    cursor: pointer;
+}
