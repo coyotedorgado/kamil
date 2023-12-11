@@ -1,16 +1,16 @@
 <div class="body">
-    <h1>Cadastro de Funcionarios funcionarios</h1>
+    <h1>Cadastro de Funcionarios</h1>
     <section *ngIf="displayPrincipal" class="container">
         <form [formGroup]="form">
-        <input formControlName="nome" required id="input1" placeholder="Digite o nome..." (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content" type="text">
-        <input formControlName="profissao" required id="input2" placeholder="Digite a profissao..." (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content" list="lista-p">
+        <input formControlName="nome" required id="input1" placeholder="Inserir nome..." (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content" type="text">
+        <input formControlName="profissao" required id="input2" placeholder="Inserir profissao..." (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content" list="lista-p">
         <datalist id="lista-p">
             <option value="cabeleireira">cabeleireira</option>
             <option value="manicure">manicure</option>
             <option value="esteticista">esteticista</option>
             <option value="caixa">caixa</option>
         </datalist>
-        <input formControlName="sexo" required id="input3" placeholder="Digite o sexo..." maxlength="1" (keyup.enter)="alterFocus()" (click)="zerar2()" class="content" list="lista-s" type="text">
+        <input formControlName="sexo" required id="input3" placeholder="Inserir sexo..." maxlength="1" (keyup.enter)="alterFocus()" (click)="zerar2()" class="content" list="lista-s" type="text">
         <datalist id="lista-s">
             <option value="f">feminino</option>
             <option value="m">masculino</option>
