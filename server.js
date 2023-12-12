@@ -11,6 +11,14 @@ function insertFunci(a, b, c) {
     })
     console.log("foi inserido na tabela funcionarios ", a, b, c)
 }
+
+function addCliente(a) {
+  var sql = `INSERT INTO clientes (nome) VALUES ('${a}')`
+  db.query(sql, function(err, resultado){
+    if(err) throw err;
+  })
+  console.log(`foi inserido no banco ${a}`)
+}
 // Configuração da conexão com o MySQL
 const db = mysql.createConnection({
   host: 'localhost',
@@ -48,8 +56,20 @@ app.get('/funcionarios', (req, res)=> {
   })
 })
 
+app.get('/clientes', (req, res)=> {
+  var sql = `SELECT * FROM clientes`
+  db.query(sql, (err, resultado)=>{
+    if(err) throw err;
+    res.send(resultado)
+  })
+})
+
 app.get('/addFuncio/:nome/:profissao/:sexo', (req, res) => {
   insertFunci(req.params.nome, req.params.profissao, req.params.sexo)
+})
+
+app.get('/addClientes/:nome', (req, res) => {
+  addCliente(req.params.nome)
 })
 
 app.listen(port, () => {

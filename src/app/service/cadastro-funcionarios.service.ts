@@ -7,6 +7,8 @@ export class CadastroFuncionariosService {
   public displayPrincipal: boolean = true;
   public msgError: boolean = false;
 
+  constructor() {}
+
   public esconderFunciAdd() {
     if(this.displayPrincipal == true){
       this.displayPrincipal = false

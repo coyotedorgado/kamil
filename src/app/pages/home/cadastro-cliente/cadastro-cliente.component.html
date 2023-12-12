@@ -1,7 +1,9 @@
 <body class="body">
     <h1>Cadastro de Clientes</h1>
-    <section class="container">
-        <input class="inputs buttonAdd" type="text">
-        <button class="buttonAdd">Adicionar Cliente</button>
+    <section [formGroup]="form" class="container">
+        <input (click)="esconderPmsg()" id="inputNome" formControlName="nome" required class="inputs buttonAdd" type="text">
+        <button (click)="dadosCli()" class="buttonAdd">Adicionar Cliente</button>
+        <p *ngIf="form.controls.nome.invalid && (form.controls.nome.dirty && form.controls.nome.touched)">Nome é obrigatorio</p>
+        <p *ngIf="nomeIgual">Este cliente ja existe!</p>
     </section>
 </body>
