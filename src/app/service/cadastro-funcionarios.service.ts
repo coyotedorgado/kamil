@@ -103,6 +103,8 @@ export class CadastroFuncionariosService {
         tdSexo.appendChild(sexo)
         //th
         var tr = document.createElement("tr")
+        tr.style.width = '100%'
+        tr.style.display = 'flex'
         tr.appendChild(tdNome)
         tr.appendChild(tdProfissao)
         tr.appendChild(tdSexo)
@@ -112,11 +114,13 @@ export class CadastroFuncionariosService {
         tdProfissao.style.border = "1px solid black"
         tdSexo.style.border = "1px solid black"
         
-        tr.style.border = "1px solid black"
-        
         tdNome.style.textAlign = "center"
         tdProfissao.style.textAlign = "center"
         tdSexo.style.textAlign = "center"
+
+        tdNome.style.width = '33.3%'
+        tdProfissao.style.width = '33.3%'
+        tdSexo.style.width = '33.3%'
         
         tdNome.style.verticalAlign = "middle"
         tdProfissao.style.verticalAlign = "middle"

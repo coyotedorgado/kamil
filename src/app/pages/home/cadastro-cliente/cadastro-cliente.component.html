@@ -1,9 +1,22 @@
 <body class="body">
     <h1>Cadastro de Clientes</h1>
-    <section [formGroup]="form" class="container">
-        <input (click)="esconderPmsg()" id="inputNome" formControlName="nome" required class="inputs buttonAdd" type="text">
-        <button (click)="dadosCli()" class="buttonAdd">Adicionar Cliente</button>
-        <p *ngIf="form.controls.nome.invalid && (form.controls.nome.dirty && form.controls.nome.touched)">Nome é obrigatorio</p>
-        <p *ngIf="nomeIgual">Este cliente ja existe!</p>
+    <section *ngIf="displayPrincipal" class="container">
+        <section style="width: min-content;" [formGroup]="form">
+            <p *ngIf="displayCli">Cliente adicionado</p>
+            <input (click)="esconderPmsg()" id="inputNome" formControlName="nome" required class="inputs buttonAdd" type="text">
+            <button (click)="dadosCli()" class="buttonAdd">Adicionar Cliente</button>
+            <p *ngIf="form.controls.nome.invalid && (form.controls.nome.dirty && form.controls.nome.touched)">Nome é obrigatorio</p>
+            <p *ngIf="nomeIgual">Este cliente ja existe!</p>
+            <button (click)="escoderFuncioAdd()" class="exibirClientes">visualizar clientes</button>
+        </section>
+    </section>
+    <section class="container" *ngIf="!displayPrincipal">
+        <section class="clientes" id="table">
+            <tr>
+                <td>Id Cliente</td>
+                <td>Nomes</td>
+            </tr>
+        </section>
+        <button (click)="escoderFuncioAdd()" class="buttonC">adicionar Cliente</button>
     </section>
 </body>

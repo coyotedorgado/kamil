@@ -30,12 +30,14 @@
           </div>
           <button (click)="escoderFuncioAdd()" class="exibirFuncionarios">visualizar funcionarios</button>
         </section>
-        <table id="table" class="funcionarios" *ngIf="!displayPrincipal">
-          <tr>
-            <td>Nome</td>
-            <td>Profissão</td>
-            <td>Sexo</td>
-          </tr>
+        <section class="container" *ngIf="!displayPrincipal">
+          <section class="funcionarios" id="table">
+            <tr>
+              <td>Nome</td>
+              <td>Profissão</td>
+              <td>Sexo</td>
+            </tr>
+          </section>
           <button (click)="escoderFuncioAdd()" class="buttonF">adicionar Funcionario</button>
-        </table>
+        </section>
 </div>
