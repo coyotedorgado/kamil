@@ -89,42 +89,45 @@ export class CadastroFuncionariosService {
     .then(data => {
       var table = document.getElementById("table")!;
       for(let i = 0; i < data.length; i++) {
-        //texto dos td`s
-        var nome = document.createTextNode(`${data[i].nome}`)
-        var profissao = document.createTextNode(`${data[i].tipo}`)
-        var sexo = document.createTextNode(`${data[i].sexo}`)
-        //td`s
-        var tdNome = document.createElement("td")
-        var tdProfissao = document.createElement("td")
-        var tdSexo = document.createElement("td")
-        //valores dos td`s
-        tdNome.appendChild(nome)
-        tdProfissao.appendChild(profissao)
-        tdSexo.appendChild(sexo)
-        //th
-        var tr = document.createElement("tr")
-        tr.style.width = '100%'
-        tr.style.display = 'flex'
-        tr.appendChild(tdNome)
-        tr.appendChild(tdProfissao)
-        tr.appendChild(tdSexo)
-        table.appendChild(tr)
-
-        tdNome.style.border = "1px solid black"
-        tdProfissao.style.border = "1px solid black"
-        tdSexo.style.border = "1px solid black"
-        
-        tdNome.style.textAlign = "center"
-        tdProfissao.style.textAlign = "center"
-        tdSexo.style.textAlign = "center"
-
-        tdNome.style.width = '33.3%'
-        tdProfissao.style.width = '33.3%'
-        tdSexo.style.width = '33.3%'
-        
-        tdNome.style.verticalAlign = "middle"
-        tdProfissao.style.verticalAlign = "middle"
-        tdSexo.style.verticalAlign = "middle"
+        setTimeout(() => {
+          
+          //texto dos td`s
+          var nome = document.createTextNode(`${data[i].nome}`)
+          var profissao = document.createTextNode(`${data[i].tipo}`)
+          var sexo = document.createTextNode(`${data[i].sexo}`)
+          //td`s
+          var tdNome = document.createElement("td")
+          var tdProfissao = document.createElement("td")
+          var tdSexo = document.createElement("td")
+          //valores dos td`s
+          tdNome.appendChild(nome)
+          tdProfissao.appendChild(profissao)
+          tdSexo.appendChild(sexo)
+          //th
+          var tr = document.createElement("tr")
+          tr.style.width = '100%'
+          tr.style.display = 'flex'
+          tr.appendChild(tdNome)
+          tr.appendChild(tdProfissao)
+          tr.appendChild(tdSexo)
+          table.appendChild(tr)
+  
+          tdNome.style.border = "1px solid black"
+          tdProfissao.style.border = "1px solid black"
+          tdSexo.style.border = "1px solid black"
+          
+          tdNome.style.textAlign = "center"
+          tdProfissao.style.textAlign = "center"
+          tdSexo.style.textAlign = "center"
+  
+          tdNome.style.width = '33.3%'
+          tdProfissao.style.width = '33.3%'
+          tdSexo.style.width = '33.3%'
+          
+          tdNome.style.verticalAlign = "middle"
+          tdProfissao.style.verticalAlign = "middle"
+          tdSexo.style.verticalAlign = "middle"
+        }, i * 100);
       }
     })
   }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder,Validators} from '@angular/forms';
+import { FormBuilder, Validators} from '@angular/forms';
 import { CadastroFuncionariosService } from 'src/app/service/cadastro-funcionarios.service';
 
 @Component({

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { take } from 'rxjs';
 import { AddClienteServiceService } from 'src/app/service/add-cliente-service.service';
 
 @Component({
@@ -32,8 +33,12 @@ export class CadastroClienteComponent {
     this.nomeIgual = false
   }
   public async dadosCli() {
+    console.log('chamou')
     this.nomeIgual = false
     var nome = this.form.value.nome!.toLocaleLowerCase().trim()
+    if(nome == ''){
+      return
+    }
      var nomes = await this.addCliService.dadosClientes()
      for(let i = 0; i < nomes.length; i++) {
       if(nome == nomes[i].nome) {
