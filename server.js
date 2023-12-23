@@ -19,6 +19,14 @@ function addCliente(a) {
   })
   console.log(`foi inserido no banco ${a}`)
 }
+
+  function removerConta(id) {
+  var sql = `UPDATE contas SET boletoAtivo = 0 WHERE contaId = ${id}`
+  db.query(sql, (err, resultado)=>{
+    if(err) throw err
+  })
+  console.log(`foi alterado a tabela contas com o id ${id}`)
+  }
 // Configuração da conexão com o MySQL
 const db = mysql.createConnection({
   host: 'localhost',
@@ -70,6 +78,19 @@ app.get('/addFuncio/:nome/:profissao/:sexo', (req, res) => {
 
 app.get('/addClientes/:nome', (req, res) => {
   addCliente(req.params.nome)
+})
+
+app.get('/contas', (req, res)=> {
+  var sql = 'SELECT * FROM contas WHERE boletoAtivo = true'
+  db.query(sql, (err, resultado)=>{
+    if(err){
+      console.log(err)
+    }
+    res.send(resultado)
+  })
+})
+app.get('/contas/removerConta/:id', (req, res)=>{
+  removerConta(req.params.id)
 })
 
 app.listen(port, () => {

@@ -3,8 +3,10 @@
     <section *ngIf="displayPrincipal" class="container">
         <section class="contas" id="table">
             <tr>
-                <td>Id Cliente</td>
-                <td>Nomes</td>
+                <td>Beneficiario</td>
+                <td>Valor</td>
+                <td>Vencimento</td>
+                <td>Pago</td>
             </tr>
         </section>
     </section>
@@ -16,6 +18,6 @@
         <input formControlName="valor" class="inputContas" type="number">
         <label>Data de vencimento</label>
         <input formControlName="data" class="inputContas" type="date">
-        <button  (click)="formC()">Adicionar Conta</button>
+        <button *ngIf="form.controls.beneficiario.valid && form.controls.valor.valid && form.controls.data.valid" class="buttonConta" (click)="formC()">Adicionar Conta</button>
     </section>
 </body>

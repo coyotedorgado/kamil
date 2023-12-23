@@ -44,12 +44,23 @@ h1{
     border: 2px solid;
     box-sizing: content-box;
     max-height: max-content;
+    overflow-y: auto;
 }
 .inputContas{
     font-size: 18px;
     padding-left: 10px;
     padding-right: 10px;
     border: solid 1px pink;
+}
+.buttonConta{
+    position: absolute;
+    font-size: 18px;
+    bottom: 0;
+    border: 1px solid pink;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
 }
 .buttonC{
     position: absolute;
@@ -63,4 +74,18 @@ h1{
     background-color: rgba(137, 161, 181, 0.251);
     font-size: 15px;
     border: 1px solid;
+}
+tr{
+    height: 25px;
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+}
+td{
+    font-size: 11px;
+    display: flex;
+    border: 1px solid black;
+    width: 25%;
+    align-items: center;
+    justify-content: center;
 }
