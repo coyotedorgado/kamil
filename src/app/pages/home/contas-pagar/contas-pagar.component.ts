@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AddContasService } from 'src/app/service/add-contas.service';
 
@@ -16,10 +17,10 @@ export class ContasPagarComponent implements AfterViewInit {
   public removerConta(id: number) {
     this.addConta.removerBoleto(id)
   }
-  
-  async ngAfterViewInit() {
+
+  public async exibirContas() {
     var table = document.getElementById("table")!
-    var contas = await this.addConta.contas()
+      var contas = await this.addConta.contas()
 
     for(let i = 0; i < contas.length; i++) {
       var tr = document.createElement("tr")
@@ -82,27 +83,39 @@ export class ContasPagarComponent implements AfterViewInit {
       table.appendChild(tr)
     }
   }
-
-  form = this.fb.group({
-    beneficiario: ['Comepi', Validators.required],
-    valor: ['', Validators.required],
-    data: ['', Validators.required]
-  })
-  public formC() {
-    var beneficiario = this.form.value.beneficiario
-    var valor = this.form.value.valor
-    var data = this.form.value.data
-    this.addConta.contas()
-    // console.log(beneficiario, valor, data)
-  }
-  public escoderAddContas() {
+  
+  public async escoderAddContas() {
     if(this.displayPrincipal == true){
       this.msgButton = "Visualizar Contas"
       this.displayPrincipal = false
     }else{
       this.msgButton = "Adicionar Conta"
       this.displayPrincipal = true
+
+      setTimeout(() => {
+      this.exibirContas()
+      }, 200);
     }
+  }
+  async ngAfterViewInit() {
+    this.exibirContas()
+  }
+
+  form = this.fb.group({
+    beneficiario: ['Comepi', Validators.required]!,
+    valor: ['', Validators.required]!,
+    data: ['', Validators.required]!
+  })
+  public formC() {
+    var beneficiario = this.form.value.beneficiario!
+    var valor = this.form.value.valor!
+    var data = this.form.value.data!
+    this.addConta.adicionarConta(beneficiario, valor, data)
+    this.form.setValue({
+      beneficiario: '',
+      valor: '',
+      data: ''
+    })
   }
 
 }

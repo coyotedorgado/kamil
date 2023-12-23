@@ -27,6 +27,13 @@ function addCliente(a) {
   })
   console.log(`foi alterado a tabela contas com o id ${id}`)
   }
+  function addConta(ben, valor, vencimento) {
+    var sql = `INSERT INTO contas(beneficiario, valor, dataVencimento, boletoAtivo) VALUES ('${ben}', '${valor}', '${vencimento}', true);`
+    db.query(sql, (err, resultado)=>{
+      if(err) throw err
+    })
+    console.log(`adicionado uma conta ${ben}, ${valor}, ${vencimento}`)
+  }
 // Configuração da conexão com o MySQL
 const db = mysql.createConnection({
   host: 'localhost',
@@ -91,6 +98,9 @@ app.get('/contas', (req, res)=> {
 })
 app.get('/contas/removerConta/:id', (req, res)=>{
   removerConta(req.params.id)
+})
+app.get('/contas/addConta/:beneficiario/:valor/:vencimento', (req, res)=>{
+  addConta(req.params.beneficiario, req.params.valor, req.params.vencimento)
 })
 
 app.listen(port, () => {
