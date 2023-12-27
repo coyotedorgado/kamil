@@ -1,5 +1,10 @@
 <div class="body">
-    <form >
-    
-    </form>
+    <h1>Cadastro de Serviços</h1>
+    <section [formGroup]="form" class="container">
+        <label>Nome Serviço</label>
+        <input formControlName="servico" class="inputServiço" type="text">
+        <label>Comissão %</label>
+        <input formControlName="comissao" class="inputServiço" type="number">
+        <button *ngIf="form.controls.servico.valid && form.controls.comissao.valid" class="inputServiço">Adicionar Serviço</button>
+    </section>
 </div>
