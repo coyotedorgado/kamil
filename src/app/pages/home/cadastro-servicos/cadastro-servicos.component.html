@@ -5,6 +5,7 @@
         <input formControlName="servico" class="inputServiço" type="text">
         <label>Comissão %</label>
         <input formControlName="comissao" class="inputServiço" type="number">
-        <button *ngIf="form.controls.servico.valid && form.controls.comissao.valid" class="inputServiço">Adicionar Serviço</button>
+        <button (click)="addServico()" *ngIf="form.controls.servico.valid && form.controls.comissao.valid" class="inputServiço">Adicionar Serviço</button>
+        <p *ngIf="form.controls.comissao.invalid && (form.controls.comissao.dirty && form.controls.comissao.touched)">Serviço e comissao são obrigatorios</p>
     </section>
 </div>
