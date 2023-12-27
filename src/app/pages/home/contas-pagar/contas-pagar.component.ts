@@ -11,6 +11,7 @@ import { AddContasService } from 'src/app/service/add-contas.service';
 export class ContasPagarComponent implements AfterViewInit {
   public displayPrincipal: boolean = true;
   public msgButton: string = "Adicionar Conta";
+  public valorTotal: Number = 0;
   
   constructor(private fb: FormBuilder, private addConta: AddContasService) {}
 
@@ -23,6 +24,8 @@ export class ContasPagarComponent implements AfterViewInit {
       var contas = await this.addConta.contas()
 
     for(let i = 0; i < contas.length; i++) {
+      setTimeout(() => {
+        
       var tr = document.createElement("tr")
       //texto dos td´s
       var beneficiario = document.createTextNode(contas[i].beneficiario)
@@ -81,6 +84,7 @@ export class ContasPagarComponent implements AfterViewInit {
       tr.style.verticalAlign = 'middle'
       
       table.appendChild(tr)
+      }, i*  200);
     }
   }
   
@@ -99,6 +103,12 @@ export class ContasPagarComponent implements AfterViewInit {
   }
   async ngAfterViewInit() {
     this.exibirContas()
+    var contas = await this.addConta.contas()
+    for(let i = 0; i < contas.length; i++) {
+      setTimeout(() => {
+        this.valorTotal = this.valorTotal + contas[i].valor
+      }, 250 * i);
+    }
   }
 
   form = this.fb.group({
@@ -117,5 +127,4 @@ export class ContasPagarComponent implements AfterViewInit {
       data: ''
     })
   }
-
 }
