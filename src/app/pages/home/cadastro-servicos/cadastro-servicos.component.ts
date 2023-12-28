@@ -9,6 +9,9 @@ import { CadastroServiceService } from 'src/app/service/cadastro-service.service
 })
 export class CadastroServicosComponent {
 
+  public nomeIgual = false
+  public msgAdd = false
+
   constructor(private fb: FormBuilder, private cadastroService: CadastroServiceService) {}
 
   form = this.fb.group({
@@ -16,8 +19,16 @@ export class CadastroServicosComponent {
     comissao: ['', Validators.required]
   })
 
-  public addServico() {
-    console.log(this.form.value.servico, this.form.value.comissao)
+  public async addServico() {
+    this.nomeIgual = false
+    this.msgAdd = false
+    var servico = this.form.value.servico!
+    var comissao = Number(this.form.value.comissao!)
+    if(await this.cadastroService.adicionarServico(servico, comissao) == true) {
+      this.nomeIgual = true
+    }else{
+      this.msgAdd = true
+    }
     this.form.setValue({
       servico: '',
       comissao: ''

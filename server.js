@@ -103,6 +103,22 @@ app.get('/contas/addConta/:beneficiario/:valor/:vencimento', (req, res)=>{
   addConta(req.params.beneficiario, req.params.valor, req.params.vencimento)
 })
 
+app.get('/servicos', (req, res)=> {
+  var sql = `SELECT * FROM servicos`
+  db.query(sql, (err, resultado)=> {
+    if(err) throw err
+    res.send(resultado)
+  })
+})
+
+app.post('/servicos/addServico/:servico/:comissao', (req, res)=>{
+  var sql = `INSERT INTO servicos (servico, comissao) VALUES ('${req.params.servico}', '${req.params.comissao}')`
+  db.query(sql, (err, resultado)=> {
+    if(err) throw err
+    res.send(resultado)
+  })
+})
+
 app.listen(port, () => {
   console.log(`Servidor Node.js rodando na porta ${port}`);
 });
