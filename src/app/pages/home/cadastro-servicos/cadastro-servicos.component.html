@@ -1,8 +1,8 @@
 <div class="body">
     <h1>Cadastro de Serviços</h1>
-    <section [formGroup]="form" class="container">
+    <section *ngIf="displayPrincipal" [formGroup]="form" class="container">
         <p *ngIf="msgAdd" style="color: rgb(69, 36, 255);">Servico adicionado</p>
-        <label>Nome Serviço</label>
+        <label>Nome Servico</label>
         <input formControlName="servico" class="inputServiço" type="text">
         <label>Comissão %</label>
         <input formControlName="comissao" class="inputServiço" type="number">
@@ -10,4 +10,13 @@
         <p *ngIf="form.controls.comissao.invalid && (form.controls.comissao.dirty && form.controls.comissao.touched)">Serviço e comissao são obrigatorios</p>
         <p *ngIf="nomeIgual" style="color: red;">Este servico ja existe</p>
     </section>
+    <section *ngIf="!displayPrincipal" class="container">
+        <section class="servicos" id="table">
+            <tr>
+                <td>Servico</td>
+                <td>Comissao</td>
+            </tr>
+        </section>
+    </section>
+    <button (click)="alterarDisplay()" class="displayButton">{{msgDisplayButton}}</button>
 </div>
