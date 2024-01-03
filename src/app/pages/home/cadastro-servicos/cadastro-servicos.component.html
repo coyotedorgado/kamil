@@ -2,7 +2,7 @@
     <h1>Cadastro de Serviços</h1>
     <section *ngIf="displayPrincipal" [formGroup]="form" class="container">
         <p *ngIf="msgAdd" style="color: rgb(69, 36, 255);">Servico adicionado</p>
-        <label>Nome Servico</label>
+        <label>Nome Serviço</label>
         <input formControlName="servico" class="inputServiço" type="text">
         <label>Comissão %</label>
         <input formControlName="comissao" class="inputServiço" type="number">
@@ -13,8 +13,8 @@
     <section *ngIf="!displayPrincipal" class="container">
         <section class="servicos" id="table">
             <tr>
-                <td>Servico</td>
-                <td>Comissao</td>
+                <td>servico</td>
+                <td>comissao</td>
             </tr>
         </section>
     </section>
