@@ -1,1 +1,20 @@
-<p>tipos-pagamentos works!</p>
+<body class="body">
+    <h1>Adicionar Pagamento</h1>
+    <section *ngIf="displayPrincipal" [formGroup]="form" class="container">
+        <p style="color: blue;" *ngIf="msgOk">Tipo adicionado</p>
+        <label>Tipo de Pagamento</label>
+        <input formControlName="pagamento" type="text">
+        <p *ngIf="nomeIgual">Este tipo de pagamento ja exite</p>
+        <p style="color: red;" *ngIf="form.controls.pagamento.dirty && form.controls.pagamento.touched && form.controls.pagamento.invalid">Tipo de Pagamento é Obrigatorio</p>
+        <button *ngIf="form.controls.pagamento.valid" (click)="addPagamento()">Adicionar</button>
+    </section>
+    <section  *ngIf="!displayPrincipal" class="container">
+        <section class="pagamentos" id="table">
+            <tr>
+                <td>Nr</td>
+                <td>tipos</td>
+            </tr>
+        </section>
+    </section>
+    <button (click)="alterarDisplay()" class="displayButton">{{msgDisplayButton}}</button>
+</body>
