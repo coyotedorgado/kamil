@@ -126,6 +126,14 @@ app.get('/pagamentos', (req, res)=> {
     res.send(resultado)
   })
 })
+app.post('/pagamentos/adicionar/:tipo', (req, res)=>{
+  var tipo = req.params.tipo
+  var sql = `INSERT INTO tipos_pagamentos (pagamentos) VALUES ('${tipo}')`
+  db.query(sql, (err, resultado)=>{
+    if(err) throw err
+    res.send(resultado)
+  })
+})
 app.listen(port, () => {
   console.log(`Servidor Node.js rodando na porta ${port}`);
 });
