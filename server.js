@@ -119,6 +119,13 @@ app.post('/servicos/addServico/:servico/:comissao', (req, res)=>{
   })
 })
 
+app.get('/pagamentos', (req, res)=> {
+  var sql = 'SELECT * FROM tipos_pagamentos;'
+  db.query(sql, (err, resultado)=>{
+    if(err) throw err
+    res.send(resultado)
+  })
+})
 app.listen(port, () => {
   console.log(`Servidor Node.js rodando na porta ${port}`);
 });
