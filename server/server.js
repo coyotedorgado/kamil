@@ -23,6 +23,8 @@ app.get('/login', (req, res)=> {
             const token = gerarToken(usuarioIndentificado)
             res.send(token)
             break
+          }else{
+            res.send(false)
           }
         }
       }
