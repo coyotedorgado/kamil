@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/LoginComponent';
 import { HomeComponent } from './pages/home/home.component';
-import { AutorizadoGuard } from './guard/autorizado.guard';
+import { autorizadoGuard } from './guard/autorizado.guard';
 import { LancarCComponent } from './pages/home/lancar-c/lancar-c.component';
 import { CadastroClienteComponent } from './pages/home/cadastro-cliente/cadastro-cliente.component';
 import { CadastroFuncionariosComponent } from './pages/home/cadastro-funcionarios/cadastro-funcionarios.component';
@@ -13,13 +13,13 @@ import { ContasPagarComponent } from './pages/home/contas-pagar/contas-pagar.com
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AutorizadoGuard]},
-  {path: 'home/lancarC', component: LancarCComponent, canActivate: [AutorizadoGuard]},
-  {path: 'home/cadastroCli', component: CadastroClienteComponent, canActivate: [AutorizadoGuard]},
-  {path: 'home/cadastroFun', component: CadastroFuncionariosComponent, canActivate: [AutorizadoGuard]},
-  {path: 'home/tiposPagamento', component: TiposPagamentosComponent, canActivate: [AutorizadoGuard]},
-  {path: 'home/cadastroServ', component: CadastroServicosComponent, canActivate: [AutorizadoGuard]},
-  {path: 'home/contasPagar', component: ContasPagarComponent, canActivate: [AutorizadoGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [autorizadoGuard]},
+  {path: 'home/lancarC', component: LancarCComponent, canActivate: [autorizadoGuard]},
+  {path: 'home/cadastroCli', component: CadastroClienteComponent, canActivate: [autorizadoGuard]},
+  {path: 'home/cadastroFun', component: CadastroFuncionariosComponent, canActivate: [autorizadoGuard]},
+  {path: 'home/tiposPagamento', component: TiposPagamentosComponent, canActivate: [autorizadoGuard]},
+  {path: 'home/cadastroServ', component: CadastroServicosComponent, canActivate: [autorizadoGuard]},
+  {path: 'home/contasPagar', component: ContasPagarComponent, canActivate: [autorizadoGuard]},
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ import { AutorizacaoService } from '../service/autorizacao.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AutorizadoGuard {
+export class autorizadoGuard {
 
   constructor(
     private autorizadoService: AutorizacaoService,
