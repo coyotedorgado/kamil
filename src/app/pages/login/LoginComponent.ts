@@ -44,8 +44,7 @@ export class LoginComponent implements OnInit {
     }
   }
   public checkLogin(usuario: string, senha: string) {
-    this.serviceAuth.chechAuth(usuario, senha) // chama a funcao de verificaçao
-    if(this.serviceAuth.chechAuth(usuario, senha) == false) {
+    if(this.serviceAuth.saveToken(usuario, senha) == false) {
       this.msgError = false
     }
   }

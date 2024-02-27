@@ -1,18 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpParamsOptions } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutorizacaoService {
-  autorizado = true;
-  usuario = "vaniafernandes";
-  senha = "sis2013";
+  autorizado = false;
+  usuario = "";
+  senha = "";
   constructor(private router: Router, private http: HttpClient) {}
-  // this.router.navigate(['/home'])
-  chechAuth(usuario: string, senha: string) {
-
+  chechAuth(usuario: string, senha: string): Observable<any> {
+    this.usuario = usuario
+    this.senha = senha
+    const optios: HttpParamsOptions = {
+      fromString: `usuario=${usuario}&senha=${senha}`
+    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+    const params = new HttpParams(optios)
+    return this.http.get('http://localhost:3000/login', {params, headers})
   }
-
+  saveToken(usuario: string, senha: string): boolean {
+    var  result = this.chechAuth(usuario, senha)
+    result.subscribe(
+      data => {
+        if(data != false) {
+          sessionStorage.setItem('token', data.token)
+          this.autorizado = true
+          this.router.navigate(['/home'])
+        }else{
+          this.autorizado = false
+        }
+      }
+      )
+      return this.autorizado
+  }
 }

@@ -4,10 +4,14 @@ const cors = require('cors');
 const { gerarToken, validarToken } = require('./geneValidToken')
 
 const app = express();
+app.use(cors())
 
 app.get('/login', (req, res)=> {
+  console.log('chamou')
   var usuario = req.query.usuario
   var senha = req.query.senha
+  var token = ''
+  var userValido = false
   if(usuario == null || senha == null) {
     res.send('usuario ou senha incorretos')
   }else{
@@ -19,13 +23,20 @@ app.get('/login', (req, res)=> {
       }else{
         for(let i = 0; i < resultado.length; i++){
           if(usuario == resultado[i].usuario && senha == resultado[i].senha && usuario != null) {
-            usuarioIndentificado = { id: resultado[i].userId, nome: resultado[i].usuario}
-            const token = gerarToken(usuarioIndentificado)
-            res.send(token)
+            usuarioIndentificado = {
+              id: resultado[i].userId,
+              nome: resultado[i].usuario
+            }
+            token = gerarToken(usuarioIndentificado)
+            userValido = true
+            console.log('certo')
             break
-          }else{
-            res.send(false)
           }
+        }
+        if(userValido == true){
+          res.send({token})
+        }else{
+          res.send(false)
         }
       }
     })
@@ -79,7 +90,6 @@ db.connect((err) => {
   }
   console.log('Conexão com o banco de dados MySQL estabelecida');
 });
-app.use(cors())
 // Defina uma rota de exemplo
 app.get('/', (req, res) => {
   // Execute uma consulta SQL de exemplo

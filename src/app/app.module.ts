@@ -12,6 +12,7 @@ import { CadastroFuncionariosComponent } from './pages/home/cadastro-funcionario
 import { TiposPagamentosComponent } from './pages/home/tipos-pagamentos/tipos-pagamentos.component';
 import { CadastroServicosComponent } from './pages/home/cadastro-servicos/cadastro-servicos.component';
 import { ContasPagarComponent } from './pages/home/contas-pagar/contas-pagar.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ContasPagarComponent } from './pages/home/contas-pagar/contas-pagar.com
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
