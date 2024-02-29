@@ -12,7 +12,7 @@ import { AutorizacaoService } from 'src/app/service/autorizacao.service';
 export class LoginComponent implements OnInit {
   public us: string = '';//variavel vinda do input
   public se: string = '';//variavel vinda de input
-  public msgError: boolean = true;
+  public msgError: boolean = false;
   public data: Date = new Date();
   public count: number = 0;
 

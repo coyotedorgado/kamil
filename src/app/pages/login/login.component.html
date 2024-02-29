@@ -8,7 +8,7 @@
         <div class="divisor">
             <p>senha</p>
             <input class="inputs" [(ngModel)]="se" type="password" (keyup.enter)="alterFocus()">
-            <button [ngStyle]="{'display': msgError ? 'none' : 'block'}" class="msgError">usuario ou senha incorretos</button>
+            <button *ngIf="msgError" class="msgError">usuario ou senha incorretos</button>
         </div>
         <button class="button" (click)="checkLogin(us, se)" (keyup.enter)="alterFocus()">Login</button>
     </section>
