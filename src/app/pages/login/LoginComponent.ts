@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
   public checkLogin(usuario: string, senha: string) {
     if(this.serviceAuth.saveToken(usuario, senha) == false) {
-      this.msgError = false
+      this.msgError = true
     }
   }
 }

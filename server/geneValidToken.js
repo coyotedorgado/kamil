@@ -10,7 +10,8 @@ function validarToken(token) {
         const decoded = jwt.verify(token, secretKey)
         return decoded.usuario
     }catch (error){
-        throw new Error('chave invalida')
+        console.log('chave invalida')
+        return false
     }
 }
 

@@ -8,10 +8,19 @@ import { Token } from '@angular/compiler';
   providedIn: 'root'
 })
 export class AutorizacaoService {
-  autorizado = false;
   usuario = "";
   senha = "";
   constructor(private router: Router, private http: HttpClient) {}
+  async checkToken() {
+    var autorizado = false;
+    await fetch(`http://localhost:3000/tokenValidation?token=${sessionStorage.getItem('token')}`)
+    .then(async res=>{
+      if(await res.json()){
+        autorizado = true
+      }
+    })
+    return autorizado
+  }
   chechAuth(usuario: string, senha: string): Observable<any> {
     this.usuario = usuario
     this.senha = senha
@@ -25,18 +34,24 @@ export class AutorizacaoService {
     return this.http.get('http://localhost:3000/login', {params, headers})
   }
   saveToken(usuario: string, senha: string): boolean {
+    var autorizado = false;
     var  result = this.chechAuth(usuario, senha)
     result.subscribe(
       data => {
-        if(data != false) {
+        if(data.boolean) {
           sessionStorage.setItem('token', data.token)
-          this.autorizado = true
+          
+          autorizado = true
           this.router.navigate(['/home'])
         }else{
-          this.autorizado = false
+          autorizado = false
         }
       }
       )
-      return this.autorizado
+      if(autorizado){
+        return true
+      }else{
+        return false
+      }
   }
 }

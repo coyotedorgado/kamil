@@ -13,10 +13,10 @@ export class autorizadoGuard {
     private routerService: Router
     ){}
 
-  canActivate(
+   async canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.autorizadoService.autorizado == true) {
+    state: RouterStateSnapshot): Promise<Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree> {
+      if(await this.autorizadoService.checkToken() == true) {
         return true
       } else {
         this.routerService.navigate(['/login'])

@@ -5,7 +5,14 @@ const { gerarToken, validarToken } = require('./geneValidToken')
 
 const app = express();
 app.use(cors())
-
+app.get('/tokenValidation', (req, res)=>{
+  var token = req.query.token
+  if(validarToken(token) != false){
+    res.send(true)
+  }else{
+    res.send(false)
+  }
+})
 app.get('/login', (req, res)=> {
   console.log('chamou')
   var usuario = req.query.usuario
@@ -34,9 +41,14 @@ app.get('/login', (req, res)=> {
           }
         }
         if(userValido == true){
-          res.send({token})
+          res.send({
+            'boolean': true,
+            'token': token
+          })
         }else{
-          res.send(false)
+          res.send({
+            'boolean': false
+          })
         }
       }
     })
