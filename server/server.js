@@ -1,7 +1,8 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-const { gerarToken, validarToken } = require('./geneValidToken')
+const { gerarToken, validarToken } = require('./geneValidToken');
+const { error } = require('console');
 
 const app = express();
 app.use(cors())
@@ -70,7 +71,14 @@ function addCliente(a) {
   })
   console.log(`foi inserido no banco ${a}`)
 }
+function updateClient(id, nome){
+  var query = `UPDATE clientes SET nome = '${nome}' WHERE nomeId = '${id}';`;
+  db.query(query, (err, res)=>{
+    if(err) throw console.error(err);
+    console.log('id ' + id + ' modificado ' + 'para ' + nome);
+  })
 
+}
   function removerConta(id) {
   var sql = `UPDATE contas SET boletoAtivo = 0 WHERE contaId = ${id}`
   db.query(sql, (err, resultado)=>{
@@ -134,7 +142,12 @@ app.get('/addFuncio/:nome/:profissao/:sexo', (req, res) => {
 })
 
 app.get('/addClientes/:nome', (req, res) => {
-  addCliente(req.params.nome)
+  addCliente(req.params.nome);
+})
+
+app.get('/updateClient/:id/:nome', (req, res)=>{
+  updateClient(req.params.id, req.params.nome);
+  res.send(true)
 })
 
 app.get('/contas', (req, res)=> {

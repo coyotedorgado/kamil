@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { METHODS } from 'http';
 
 @Injectable({
   providedIn: 'root'
@@ -33,13 +34,18 @@ public async carregarClientes() {
     for(let i = 0; i < dataCli.length; i++) {
       setTimeout(() => {
         var id = document.createTextNode(`${dataCli[i].nomeId}`)
-        var nome = document.createTextNode(`${dataCli[i].nome}`)
+        var nome = `${dataCli[i].nome}`
   
         var tdId = document.createElement("td")
-        var tdNome = document.createElement("td")
-  
+        var tdNome = document.createElement("input")
+        
         tdId.appendChild(id)
-        tdNome.appendChild(nome)
+        tdNome.value = nome;
+        tdNome.addEventListener('keydown', (event: KeyboardEvent)=>{
+          if(event.key == "Enter"){
+            this.updateClient(dataCli[i].nomeId, tdNome.value);
+          }
+        })
   
         var tr = document.createElement("tr")
   
@@ -48,7 +54,7 @@ public async carregarClientes() {
   
         tr.style.width = '100%'
         tr.style.display = 'flex'
-  
+        
         tdId.style.verticalAlign = 'middle'
         tdId.style.border = '1px solid black'
         tdId.style.textAlign = 'center'
@@ -67,6 +73,15 @@ public async carregarClientes() {
   })
 }
 //////////////////////////////////////////////////////
+  async updateClient(id: number, nome: string) {
+  var request = await fetch(`http://localhost:3000/updateClient/${id}/${nome}`)
+  if(request.ok){
+    alert('cliente ' + id + ' foi alterado com sucesso!');
+    location.reload();
+  }
+}
+//////////////////////////////////////////////////////
+
   public async insertCli(nome: string) {
     this.NomeIgual = false
       var nomes = await this.dadosClientes()
@@ -79,11 +94,8 @@ public async carregarClientes() {
         return
       }
         if(this.NomeIgual == false) {
-          console.log("nome diferente")
-          const res = await fetch(`http://localhost:3000/addClientes/${nome}`)
+          fetch(`http://localhost:3000/addClientes/${nome}`)
           console.log(`O cliente ${nome} foi adicionado`)
-        }else{
-          console.log("nome igual")
         }
   }
 }

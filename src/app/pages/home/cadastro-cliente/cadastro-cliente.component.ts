@@ -32,6 +32,11 @@ export class CadastroClienteComponent {
   public esconderPmsg() {
     this.nomeIgual = false
   }
+  updateClient(e: any, id: number, nome: string) {
+    if(e.key == 'Enter'){
+      console.log(id, nome)
+    }
+  }
   public async dadosCli() {
     console.log('chamou')
     this.nomeIgual = false
