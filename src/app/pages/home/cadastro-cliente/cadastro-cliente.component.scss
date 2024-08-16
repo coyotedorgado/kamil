@@ -1,7 +1,10 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 .body{
     width: 100vw;
     height: 100vh;
     background-color: rgba(137, 161, 181, 0.251);
+    line-height: normal;
+    color: none;
 }
 h1{
     border-bottom: 2px solid;
@@ -19,7 +22,7 @@ h1{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // background-color: aqua;
+    background-color: rgba(137, 161, 181, 0.251);
     width: 300px;
     height: 300px;
     border: 2px solid;
@@ -39,7 +42,7 @@ h1{
     font-size: 15px;
 }
 button{
-    height: 20px;
+    // height: 20px;
     background-color: rgba(137, 161, 181, 0.251);
     font-size: 15px;
     border: 1px solid;

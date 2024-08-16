@@ -21,6 +21,13 @@
     bottom: 0;
     // border: 1px solid red;
 }
+.home_elements{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    height: 40%;
+}
 h1{
     margin-top: 70px;
     position: absolute;

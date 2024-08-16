@@ -32,12 +32,13 @@ public async carregarClientes() {
   })
   .then((dataCli)=>{
     for(let i = 0; i < dataCli.length; i++) {
-      setTimeout(() => {
         var id = document.createTextNode(`${dataCli[i].nomeId}`)
         var nome = `${dataCli[i].nome}`
   
         var tdId = document.createElement("td")
         var tdNome = document.createElement("input")
+        tdNome.classList.add("input");
+        tdNome.classList.add("is-small");
         
         tdId.appendChild(id)
         tdNome.value = nome;
@@ -68,7 +69,6 @@ public async carregarClientes() {
         var table = document.getElementById("table")!
   
           table.appendChild(tr)
-      },i * 100);
     }
   })
 }
