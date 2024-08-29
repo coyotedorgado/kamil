@@ -19,7 +19,7 @@
         <button class="button content">Adicionar Funcionario</button>
         </form>
         <p class="msgError" *ngIf="msgError">A funcionaria {{funcRepetido}} ja esta cadastrada</p>
-          <button (click)="escoderFuncioAdd()" class="exibirFuncionarios button">visualizar funcionarios</button>
+          <button (click)="escoderFuncioAdd()" class="exibirFuncionarios button">visualizar Funcionarios</button>
         </section>
         <section class="container" *ngIf="!displayPrincipal">
           <section class="funcionarios" id="table">
@@ -29,6 +29,14 @@
               <td>Sexo</td>
             </tr>
           </section>
-          <button (click)="escoderFuncioAdd()" class="buttonF button">adicionar Funcionario</button>
+          <button (click)="escoderFuncioAdd()" class="button displayButton">adicionar Funcionario</button>
         </section>
+</div>
+<div class="side_bar">
+  <button><img [routerLink]="['/home']" style="width: 32px;" src="../../../../assets/img/voltar.png" alt="voltar img"></button>
+  <button [routerLink]="['/home/lancarC']" class="button is-white">LANÇAR COMANDAS</button>
+  <button [routerLink]="['/home/cadastroCli']"class="button is-white">CADASTRO DE CLIENTES</button>
+  <button [routerLink]="['/home/tiposPagamento']"class="button is-white">TIPOS DE PAGAMENTO</button>
+  <button [routerLink]="['/home/cadastroServ']"class="button is-white">CADASTRO DE SERVIÇOS</button>
+  <button [routerLink]="['/home/contasPagar']"class="button is-white">CONTAS A PAGAR</button>
 </div>

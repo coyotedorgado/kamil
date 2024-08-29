@@ -40,14 +40,14 @@ h1{
     box-sizing: border-box;
     font-size: 15px;
 }
-button{
-    // height: 20px;
-    background-color: rgba(137, 161, 181, 0.251);
-    font-size: 15px;
-    border: 1px solid;
-    cursor: pointer;
-    display: block;
-}
+// button{
+//     // height: 20px;
+//     background-color: rgba(137, 161, 181, 0.251);
+//     font-size: 15px;
+//     border: 1px solid;
+//     cursor: pointer;
+//     display: block;
+// }
 .exibirClientes{
     position: absolute;
     left: 50%;
@@ -85,4 +85,19 @@ td{
     border: 1px solid black;
     text-align: center;
     width: 50%;
+}
+.side_bar{
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: none;
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 93%;
+    width: 24%;
+    // background-color: red;
+    border-right: 2px solid grey;
+    flex-direction: column;
+    justify-content: space-around;
 }

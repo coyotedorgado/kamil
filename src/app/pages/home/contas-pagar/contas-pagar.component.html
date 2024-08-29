@@ -21,3 +21,11 @@
         <button *ngIf="form.controls.beneficiario.valid && form.controls.valor.valid && form.controls.data.valid" class="buttonConta" (click)="formC()">Adicionar Conta</button>
     </section>
 </body>
+<div class="side_bar">
+    <button><img [routerLink]="['/home']" style="width: 32px;" src="../../../../assets/img/voltar.png" alt="voltar img"></button>
+    <button [routerLink]="['/home/lancarC']" class="button is-white">LANÇAR COMANDAS</button>
+    <button [routerLink]="['/home/cadastroCli']"class="button is-white">CADASTRO DE CLIENTE</button>
+    <button [routerLink]="['/home/cadastroFun']"class="button is-white">CADASTRO DE FUNCIONÁRIOS</button>
+    <button [routerLink]="['/home/tiposPagamento']"class="button is-white">TIPOS DE PAGAMENTO</button>
+    <button [routerLink]="['/home/cadastroServ']"class="button is-white">CADASTRO DE SERVIÇOS</button>
+</div>
