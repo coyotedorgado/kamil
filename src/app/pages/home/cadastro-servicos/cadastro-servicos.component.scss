@@ -1,3 +1,4 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 .body{
     width: 100vw;
     height: 100vh;
@@ -27,9 +28,10 @@ h1{
 }
 .inputServiço{
     font-size: 18px;
+    margin-top: 3%;
+    width: 200px;
     padding-left: 10px;
     padding-right: 10px;
-    border: solid 1px pink;
 }
 .displayButton{
     position: absolute;

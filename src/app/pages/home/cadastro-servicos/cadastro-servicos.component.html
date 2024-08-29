@@ -1,22 +1,22 @@
 <div class="body">
-    <h1>Cadastro de Serviços</h1>
-    <section *ngIf="displayPrincipal" [formGroup]="form" class="container">
-        <p *ngIf="msgAdd" style="color: rgb(69, 36, 255);">Servico adicionado</p>
-        <label>Nome Serviço</label>
-        <input formControlName="servico" class="inputServiço" type="text">
-        <label>Comissão %</label>
-        <input formControlName="comissao" class="inputServiço" type="number">
-        <button (click)="addServico()" *ngIf="form.controls.servico.valid && form.controls.comissao.valid" class="inputServiço">Adicionar Serviço</button>
+    <h1 class="title">Cadastro de Serviços</h1>
+    <section *ngIf="displayPrincipal" [formGroup]="form" class="container box">
+        <p *ngIf="msgAdd" style="color: rgb(30, 138, 61);">Serviço adicionado</p>
+        <label class="subtitle">Nome do Serviço</label>
+        <input placeholder="Digite o nome..." formControlName="servico" class="inputServiço input" type="text">
+        <label class="subtitle">Comissão %</label>
+        <input placeholder="Digite a comissão..." formControlName="comissao" class="inputServiço input" type="number">
+        <button (click)="addServico()" *ngIf="form.controls.servico.valid && form.controls.comissao.valid" class="inputServiço button">Adicionar Serviço</button>
         <p *ngIf="form.controls.comissao.invalid && (form.controls.comissao.dirty && form.controls.comissao.touched)">Serviço e comissao são obrigatorios</p>
-        <p *ngIf="nomeIgual" style="color: red;">Este servico ja existe</p>
+        <p *ngIf="nomeIgual" style="color: red;">Este serviço ja existe</p>
     </section>
-    <section *ngIf="!displayPrincipal" class="container">
-        <section class="servicos" id="table">
+    <section *ngIf="!displayPrincipal" class="container box">
+        <section class="servicos box" id="table">
             <tr>
-                <td>servico</td>
-                <td>comissao</td>
+                <td>serviço</td>
+                <td>comissão</td>
             </tr>
         </section>
     </section>
-    <button (click)="alterarDisplay()" class="displayButton">{{msgDisplayButton}}</button>
+    <button (click)="alterarDisplay()" class="displayButton button">{{msgDisplayButton}}</button>
 </div>

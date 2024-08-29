@@ -1,34 +1,25 @@
 <div class="body">
-  <h1>Cadastro de Funcionarios</h1>
-  <section *ngIf="displayPrincipal" class="container">
+  <h1 class="title">Cadastro de Funcionarios</h1>
+  <section *ngIf="displayPrincipal" class="box container">
         <p *ngIf="funcioMsg">Funcionario {{funcio}} cadastrado</p>
         <form [formGroup]="form">
-        <input formControlName="nome" required id="input1" placeholder="Inserir nome..." (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content" type="text">
-        <input formControlName="profissao" required id="input2" placeholder="Inserir profissao..." (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content" list="lista-p">
+        <input formControlName="nome" required id="input1" placeholder="Inserir nome..." (keyup.enter)="alterFocus()" (click)="zerar()" class="inputs content input" type="text">
+        <input formControlName="profissao" required id="input2" placeholder="Inserir profissao..." (keyup.enter)="alterFocus()" (click)="zerar1()" type="text" class="content input" list="lista-p">
         <datalist id="lista-p">
             <option value="cabeleireira">cabeleireira</option>
             <option value="manicure">manicure</option>
             <option value="esteticista">esteticista</option>
             <option value="caixa">caixa</option>
         </datalist>
-        <input formControlName="sexo" required id="input3" placeholder="Inserir sexo..." maxlength="1" (keyup.enter)="alterFocus()" (click)="zerar2()" class="content" list="lista-s" type="text">
+        <input formControlName="sexo" required id="input3" placeholder="Inserir sexo..." maxlength="1" (keyup.enter)="alterFocus()" (click)="zerar2()" class="content input" list="lista-s" type="text">
         <datalist id="lista-s">
             <option value="f">feminino</option>
             <option value="m">masculino</option>
         </datalist>
-        <button class="content">Adicionar Funcionario</button>
+        <button class="button content">Adicionar Funcionario</button>
         </form>
         <p class="msgError" *ngIf="msgError">A funcionaria {{funcRepetido}} ja esta cadastrada</p>
-        <div *ngIf="form.controls.nome.invalid && (form.controls.nome.dirty && form.controls.nome.touched)">
-            Nome é obrigatório.
-          </div>
-          <div *ngIf="form.controls.profissao.invalid && (form.controls.profissao.dirty && form.controls.profissao.touched)">
-            Profissão é obrigatória.
-          </div>
-          <div *ngIf="form.controls.sexo.invalid && (form.controls.sexo.dirty && form.controls.sexo.touched)">
-            Sexo é obrigatório.
-          </div>
-          <button (click)="escoderFuncioAdd()" class="exibirFuncionarios">visualizar funcionarios</button>
+          <button (click)="escoderFuncioAdd()" class="exibirFuncionarios button">visualizar funcionarios</button>
         </section>
         <section class="container" *ngIf="!displayPrincipal">
           <section class="funcionarios" id="table">
@@ -38,6 +29,6 @@
               <td>Sexo</td>
             </tr>
           </section>
-          <button (click)="escoderFuncioAdd()" class="buttonF">adicionar Funcionario</button>
+          <button (click)="escoderFuncioAdd()" class="buttonF button">adicionar Funcionario</button>
         </section>
 </div>

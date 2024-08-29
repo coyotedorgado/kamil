@@ -1,9 +1,9 @@
 <body class="body">
-    <h1>Adicionar Pagamento</h1>
-    <section *ngIf="displayPrincipal" [formGroup]="form" class="container">
+    <h1 class="title">Adicionar Pagamento</h1>
+    <section *ngIf="displayPrincipal" [formGroup]="form" class="container box">
         <p style="color: blue;" *ngIf="msgOk">Tipo adicionado</p>
-        <label>Tipo de Pagamento</label>
-        <input formControlName="pagamento" type="text">
+        <label class="subtitle">Tipo de Pagamento</label>
+        <input placeholder="Adicionar tipo..." class="input" formControlName="pagamento" type="text">
         <p *ngIf="nomeIgual">Este tipo de pagamento ja exite</p>
         <p style="color: red;" *ngIf="form.controls.pagamento.dirty && form.controls.pagamento.touched && form.controls.pagamento.invalid">Tipo de Pagamento é Obrigatorio</p>
         <button *ngIf="form.controls.pagamento.valid" (click)="addPagamento()">Adicionar</button>
@@ -16,5 +16,5 @@
             </tr>
         </section>
     </section>
-    <button (click)="alterarDisplay()" class="displayButton">{{msgDisplayButton}}</button>
+    <button (click)="alterarDisplay()" class="displayButton button">{{msgDisplayButton}}</button>
 </body>

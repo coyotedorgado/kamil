@@ -1,5 +1,5 @@
 <body class="body">
-    <h1>Contas a pagar R${{valorTotal}}</h1>
+    <h1 class="title">Contas a pagar R${{valorTotal}}</h1>
     <section *ngIf="displayPrincipal" class="container">
         <section class="contas" id="table">
             <tr>
@@ -10,14 +10,14 @@
             </tr>
         </section>
     </section>
-    <button (click)="escoderAddContas()" class="buttonC">{{msgButton}}</button>
-    <section class="container" [formGroup]="form" *ngIf="!displayPrincipal">
-        <label>Beneficiario</label>
-        <input formControlName="beneficiario" class="inputContas" type="text">
-        <label>Valor R$</label>
-        <input formControlName="valor" class="inputContas" type="number">
-        <label>Data de vencimento</label>
-        <input formControlName="data" class="inputContas" type="date">
+    <button (click)="escoderAddContas()" class="buttonC button">{{msgButton}}</button>
+    <section class="container box" [formGroup]="form" *ngIf="!displayPrincipal">
+        <label class="label">Beneficiario</label>
+        <input formControlName="beneficiario" class="input" type="text">
+        <label class="label">Valor R$</label>
+        <input formControlName="valor" class="input" type="number">
+        <label class="label">Data de vencimento</label>
+        <input formControlName="data" class="input" type="date">
         <button *ngIf="form.controls.beneficiario.valid && form.controls.valor.valid && form.controls.data.valid" class="buttonConta" (click)="formC()">Adicionar Conta</button>
     </section>
 </body>

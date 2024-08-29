@@ -1,3 +1,4 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 *{
     font-family: sans-serif;
 }
@@ -39,7 +40,7 @@ h1{
 .content{
     width: 200px;
     margin-bottom: 8px;
-    border-radius: 10px;
+    // border-radius: 10px;
 }
 .datalist{
     border: 1px rgb(99, 99, 255) solid;
