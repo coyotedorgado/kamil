@@ -1,3 +1,26 @@
 <body (mousemove)="alternar_cor()" id="body">
-    
+<div class="body">
+    <div class="div_superior box">
+        <div class="div_span">
+            <span>Localizar comanda <input class="input_superio input is-small" type="number"></span>
+            <span><button class="button is-small">vendas funcionarios</button></span>
+            <span><button class="button is-small">vendas resumo</button></span>
+            <span><button class="button is-small">alterar registro</button><input class="input_superio input is-small" type="number"></span>
+        </div>
+        <div class="div_data">
+            <span>DATA <input type="date"></span>
+            <div>
+                <span>
+                    nr_comanda <input class="input_superio input is-small" type="number">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="div_comandas">
+<input type="text" list="lista_clientes">
+</div>
 </body>
+<datalist id="lista_clientes">
+    <option value="paulo"></option>
+</datalist>

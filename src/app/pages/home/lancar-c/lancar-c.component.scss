@@ -1,5 +1,42 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 #body{
     width: 100vw;
     height: 100vh;
-    opacity: 0.2;
+}
+.div_superior{
+    padding-top: 1%;
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    border-bottom: 1px solid gray;
+    // background-color: red;
+}
+.div_span{
+    position: absolute;
+    width: 100%;
+    // background-color: blue;
+    height: 50%;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    display: flex;
+}
+.input_superio{
+    width: 80px;
+    height: 29.6px;
+}
+.div_data{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 50%;
+    margin-left: 2%;
+    bottom: 0;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+#div_comandas{
+    position: absolute;
+    bottom: 0;
+    height: 75%;
+    width: 100%;
 }

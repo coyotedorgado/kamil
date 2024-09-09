@@ -12,12 +12,9 @@ export class LancarCComponent implements AfterViewInit {
 
   public alternar_cor(){
     var el = document.getElementById("body")!;
-    var hexadecimal = "0123456789abcdef";
-    var cor = "#";
-    for(let i = 0; i<6; i++){
-      var numero_aleatorio = Math.floor(Math.random() * 16);
-      cor = cor + hexadecimal[numero_aleatorio];
-    }
-    el.style.backgroundColor = cor;
+    var cor1 = Math.floor(Math.random() * 255);
+    var cor2 = Math.floor(Math.random() * 255);
+    var cor3 = Math.floor(Math.random() * 255);
+    el.style.background = `rgba(${cor1}, ${cor2}, ${cor3}, 0.2)`;
   }
 }
