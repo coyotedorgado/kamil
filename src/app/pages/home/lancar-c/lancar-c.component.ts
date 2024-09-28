@@ -15,7 +15,9 @@ export class LancarCComponent implements AfterViewInit {
     var requisicao = await fetch("http://localhost:3000/clientes");
     var clientes = await requisicao.json()
     for(let i = 0; i < clientes.length; i++){
-      console.log(clientes[i].nome);
+      const option = document.createElement("option");
+      option.value = clientes[i].nome;
+      lista_clients?.appendChild(option);
     }
   }
   public alternar_cor(){
