@@ -7,9 +7,17 @@ import { AfterViewInit, Component } from '@angular/core';
 })
 export class LancarCComponent implements AfterViewInit {
   ngAfterViewInit(): void {
-    this.alternar_cor()
+    this.alternar_cor();
+    this.inserirClientes();
   }
-
+  public async inserirClientes(){
+    var lista_clients = document.getElementById("lista_clientes");
+    var requisicao = await fetch("http://localhost:3000/clientes");
+    var clientes = await requisicao.json()
+    for(let i = 0; i < clientes.length; i++){
+      console.log(clientes[i].nome);
+    }
+  }
   public alternar_cor(){
     var el = document.getElementById("body")!;
     var cor1 = Math.floor(Math.random() * 255);
@@ -17,4 +25,5 @@ export class LancarCComponent implements AfterViewInit {
     var cor3 = Math.floor(Math.random() * 255);
     el.style.background = `rgba(${cor1}, ${cor2}, ${cor3}, 0.2)`;
   }
+
 }

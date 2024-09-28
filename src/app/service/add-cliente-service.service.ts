@@ -32,21 +32,34 @@ public async carregarClientes() {
   })
   .then((dataCli)=>{
     for(let i = 0; i < dataCli.length; i++) {
-        var id = document.createTextNode(`${dataCli[i].nomeId}`)
-        var nome = `${dataCli[i].nome}`
+        var id = document.createTextNode(`${dataCli[i].nomeId}`);
+        var nome = `${dataCli[i].nome}`;
   
-        var tdId = document.createElement("td")
-        var tdNome = document.createElement("input")
+        var tdId = document.createElement("td");
+        var tdNome = document.createElement("input");
+        tdNome.id = dataCli[i].nomeId;
         tdNome.classList.add("input");
         tdNome.classList.add("is-small");
         
         tdId.appendChild(id)
         tdNome.value = nome;
-        tdNome.addEventListener('keydown', (event: KeyboardEvent)=>{
-          if(event.key == "Enter"){
-            this.updateClient(dataCli[i].nomeId, tdNome.value);
-          }
-        })
+        (function(input) {
+          input.addEventListener('keydown', (event: KeyboardEvent) => {
+            async function updateClient(id: number, nome: string) {
+              var request = await fetch(`http://localhost:3000/updateClient/${id}/${nome}`)
+              if(request.ok){
+                alert('cliente ' + id + ' foi alterado com sucesso!');
+                location.reload();
+              }
+            }
+            if (event.key === "Enter") {
+              const clientId = Number(input.id);
+              const clientValue = input.value;
+              updateClient(clientId, clientValue);
+              console.log(clientValue);
+            }
+          });
+        })(tdNome);
   
         var tr = document.createElement("tr")
   
@@ -74,11 +87,11 @@ public async carregarClientes() {
 }
 //////////////////////////////////////////////////////
   async updateClient(id: number, nome: string) {
-  var request = await fetch(`http://localhost:3000/updateClient/${id}/${nome}`)
-  if(request.ok){
-    alert('cliente ' + id + ' foi alterado com sucesso!');
-    location.reload();
-  }
+  // var request = await fetch(`http://localhost:3000/updateClient/${id}/${nome}`)
+  // if(request.ok){
+  //   alert('cliente ' + id + ' foi alterado com sucesso!');
+  //   location.reload();
+  // }
 }
 //////////////////////////////////////////////////////
 

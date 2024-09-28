@@ -3,31 +3,39 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const { gerarToken, validarToken } = require('./geneValidToken');
 const { error } = require('console');
+const port = 3000;
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '1234',
+  database: 'vaniadb',
+  port: 3306
+});
 
 const app = express();
 app.use(cors())
 app.get('/tokenValidation', (req, res)=>{
-  var token = req.query.token
-  if(validarToken(token) != false){
-    res.send(true)
+  var token = req.query.token;
+  if(validarToken(token)){
+    res.send(true);
   }else{
-    res.send(false)
+    res.send(false);
   }
 })
 app.get('/login', (req, res)=> {
-  console.log('chamou')
-  var usuario = req.query.usuario
-  var senha = req.query.senha
-  var token = ''
-  var userValido = false
+  console.log('chamou');
+  var usuario = req.query.usuario;
+  var senha = req.query.senha;
+  var token = '';
+  var userValido = false;
   if(usuario == null || senha == null) {
-    res.send('usuario ou senha incorretos')
+    res.send('usuario ou senha incorretos');
   }else{
     var sql = `SELECT * FROM usuarios`
-    var usuarioIndentificado = ''
+    var usuarioIndentificado = '';
     db.query(sql, (err, resultado)=>{
       if(err) {
-        throw err
+        throw err;
       }else{
         for(let i = 0; i < resultado.length; i++){
           if(usuario == resultado[i].usuario && senha == resultado[i].senha && usuario != null) {
@@ -35,10 +43,10 @@ app.get('/login', (req, res)=> {
               id: resultado[i].userId,
               nome: resultado[i].usuario
             }
-            token = gerarToken(usuarioIndentificado)
-            userValido = true
-            console.log('certo')
-            break
+            token = gerarToken(usuarioIndentificado);
+            userValido = true;
+            console.log('certo');
+            break;
           }
         }
         if(userValido == true){
@@ -55,7 +63,6 @@ app.get('/login', (req, res)=> {
     })
   }
 })
-const port = 3000;
 function insertFunci(a, b, c) {
   var sql = `INSERT INTO funcionarios (nome, tipo, sexo) VALUES ('${a}', '${b}', '${c}')`
     db.query(sql, function(err, result){
@@ -94,13 +101,6 @@ function updateClient(id, nome){
     console.log(`adicionado uma conta ${ben}, ${valor}, ${vencimento}`)
   }
 // Configuração da conexão com o MySQL
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '1234',
-  database: 'vaniadb',
-  port: 3306
-});
 
 // Conecte-se ao banco de dados
 db.connect((err) => {
@@ -123,12 +123,13 @@ app.get('/', (req, res) => {
   });
 });
 
+//pega os funcionarios
 app.get('/funcionarios', (req, res)=> {
   db.query(`SELECT * FROM funcionarios`, (err, resultado)=>{
     res.send(resultado)
   })
 })
-
+//pega os clientes
 app.get('/clientes', (req, res)=> {
   var sql = `SELECT * FROM clientes`
   db.query(sql, (err, resultado)=>{
