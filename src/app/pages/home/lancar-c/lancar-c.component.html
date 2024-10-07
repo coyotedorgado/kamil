@@ -1,4 +1,4 @@
-<body (mousemove)="alternar_cor()" id="body">
+<body id="body">
 <div class="body">
     <div class="div_superior box">
         <div class="div_span">
@@ -17,8 +17,29 @@
         </div>
     </div>
 </div>
-<div id="div_comandas">
-<input type="text" list="lista_clientes">
+<div id="div_inferior">
+    <div class="box" id="div_comandas">
+        <tr class="navtr">
+            <td class="navtd">cliente</td>
+            <td class="navtd">serviço</td>
+            <td class="navtd">valor serviço</td>
+            <td class="navtd">forma pagamento</td>
+            <td class="navtd">funcionario</td>
+        </tr>
+        <section id="table">
+            <tr class="tr">
+                <td class="td"><input class="input is-small" type="text" list="lista_clientes"></td>
+                <td class="td"><input class="input is-small" type="text" list="lista_clientes"></td>
+                <td class="td"><input class="input is-small" type="text"></td>
+                <td class="td"><input class="input is-small" type="text" list="lista_clientes"></td>
+                <td class="td"><input class="input is-small" type="text" list="lista_clientes"></td>
+                <button><img style="width: 30px;" src="../../../../assets/img/plus-btn.jpg" alt=""></button>
+            </tr>
+        </section>
+        <div class="total input">
+            Total:
+        </div>
+    </div>
 </div>
 </body>
 <datalist id="lista_clientes">

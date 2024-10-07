@@ -6,9 +6,11 @@
 .div_superior{
     padding-top: 1%;
     position: absolute;
+    transform: translate(-50%, 0);
+    left: 50%;
     width: 100%;
     height: 25%;
-    border-bottom: 1px solid gray;
+    border: 1px solid gray;
     // background-color: red;
 }
 .div_span{
@@ -34,9 +36,72 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
-#div_comandas{
+#div_inferior{
     position: absolute;
     bottom: 0;
     height: 75%;
     width: 100%;
+}
+.nomes_inputs{
+    background-color: aqua;
+    height: 30px;
+    width: 100%;
+}
+#div_comandas{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    // background-color: red;
+    border: 1px solid grey;
+    height: 95%;
+    width: 98%;
+}
+
+.tr{
+    height: 25px;
+    width: 100%;
+    margin-bottom: 15px;
+    // background-color: black;
+    display: flex;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+.navtr{
+    height: 25px;
+    width: 100%;
+    margin-bottom: 5px;
+    // background-color: black;
+    display: flex;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+.td{
+    text-align: center;
+    width: 19%;
+    height: 25px;
+}
+.navtd{
+    text-align: center;
+    width: 20%;
+    height: 25px;
+}
+#table{
+    width: 95%;
+    height: 70%;
+    position: absolute;
+    // background-color: aqua;
+    overflow-y: auto;
+}
+.total{
+    color: #fff;
+    position: absolute;
+    margin: 5px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #adaa97;
+    height: 45px;
+    width: 115px;
+    align-content: center;
 }
